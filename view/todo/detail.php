@@ -22,5 +22,9 @@ $todo = $controller->detail();
         <div>詳細</div>
         <div><?php echo $todo['detail']; ?></div>
     </div>
+    <div>
+        <div>ステータス</div>
+        <div><?php echo $todo['display_status']; ?></div>
+    </div>
 </body>
 </html>

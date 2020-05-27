@@ -1,6 +1,12 @@
 <?php
 require_once('./../../config/db.php');
 class Todo {
+    const STATUS_INCOMPLETE = 0;
+    const STATUS_COMPLETED = 1;
+
+    const STATUS_INCOMPLETE_TXT = "未完了";
+    const STATUS_COMPLETED_TXT = "完了";
+
     public static function findByQuery($query) {
         $pdo = new PDO(DSN, USERNAME, PASSWORD);
         $stmh = $pdo->query($query);
@@ -11,6 +17,11 @@ class Todo {
         $todo_list = array();
     }
 
+    if($todo_list && count($todo_list) > 0) {
+        foreach ($todo_list as $index => $todo) {
+            $todo_list[$index]['display_status'] = self::getDisplayStatus($todo['status']);
+        }
+    }
         return $todo_list;
     }
 
@@ -24,6 +35,11 @@ class Todo {
         $todo_list = array();
     }
 
+    if($todo_list && count($todo_list) > 0) {
+        foreach ($todo_list as $index => $todo) {
+            $todo_list[$index]['display_status'] = self::getDisplayStatus($todo['status']);
+        }
+    }
         return $todo_list;
     }
 
@@ -37,6 +53,20 @@ class Todo {
         $todo = array();
     }
 
+    if($todo) {
+        $todo['display_status'] = self::getDisplayStatus($todo['status']);
+    }
+
+
         return $todo;
+    }
+
+    public static function getDisplayStatus($status) {
+        if($status == self::STATUS_INCOMPLETE) {
+            return self::STATUS_INCOMPLETE_TXT;
+        } elseif($status == self::STATUS_COMPLETED) {
+            return self::STATUS_COMPLETED_TXT;
+        }
+        return "";
     }
 }

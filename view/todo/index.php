@@ -17,7 +17,7 @@ $todo_list = $controller->index();
     <?php if($todo_list): ?>
         <ul>
             <?php foreach($todo_list as $todo):?>
-            <li><a href="./detail.php?todo_id=<?php echo $todo['id'] ?>"><?php echo $todo['title'];?></a></li>
+            <li><a href="./detail.php?todo_id=<?php echo $todo['id'] ?>"><?php echo $todo['title'];?></a> : <?php echo $todo['display_status'];?></li>
             <?php endforeach;?>
         </ul>
         <?php else:?>
