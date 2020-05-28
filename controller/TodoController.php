@@ -13,4 +13,17 @@ class TodoController {
 
         return $todo;
     }
+
+    public function new() {
+        $title = $_POST['title'];
+        $detail = $_POST['detail'];
+
+        var_dump($title);
+        var_dump($detail);
+
+        $todo = new Todo;
+        $todo->setTitle($title);
+        $todo->setDetail($detail);
+        $todo->save();
+    }
 }

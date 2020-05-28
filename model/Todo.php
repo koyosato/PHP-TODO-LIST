@@ -7,6 +7,34 @@ class Todo {
     const STATUS_INCOMPLETE_TXT = "未完了";
     const STATUS_COMPLETED_TXT = "完了";
 
+    public $title;
+    public $detail;
+    public $status;
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+    }
+
+    public function getDetail() {
+        return $this->detail;
+    }
+
+    public function setDetail($detail) {
+        $this->detail = $detail;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+    }
+
     public static function findByQuery($query) {
         $pdo = new PDO(DSN, USERNAME, PASSWORD);
         $stmh = $pdo->query($query);
@@ -68,5 +96,21 @@ class Todo {
             return self::STATUS_COMPLETED_TXT;
         }
         return "";
+    }
+
+    public function save() {
+        $query = sprintf("INSERT INTO `todos` (`title`, `detail`, `status`, 
+                    `created_at`, `updated_at`)
+        VALUES ('%s', '%s', 0, NOW(), NOW())",
+                $this->title,
+                $this->detail
+            );
+
+        $pdo = new PDO(DSN, USERNAME, PASSWORD);
+        $result = $pdo->query($query);
+
+        var_dump($result);
+        exit;
+
     }
 }
