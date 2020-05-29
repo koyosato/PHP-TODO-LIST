@@ -18,12 +18,14 @@ class TodoController {
         $title = $_POST['title'];
         $detail = $_POST['detail'];
 
-        var_dump($title);
-        var_dump($detail);
-
         $todo = new Todo;
         $todo->setTitle($title);
         $todo->setDetail($detail);
         $todo->save();
+
+        if($result === false) {
+            header( "Location: ./new.php" );    
+        }
+        header( "Location: ./index.php" );
     }
 }
