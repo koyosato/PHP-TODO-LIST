@@ -1,5 +1,6 @@
 <?php
 require_once('./../../model/Todo.php');
+
 class TodoController {
     public function index() {
         $todo_list = Todo::findAll(); 
@@ -24,7 +25,8 @@ class TodoController {
         $todo->save();
 
         if($result === false) {
-            header( "Location: ./new.php" );    
+            $params = sprintf("title=%s&detail=%s", $title, $detail);
+            header( "Location: ./new.php" . $params);    
         }
         header( "Location: ./index.php" );
     }
