@@ -16,12 +16,19 @@ class TodoController {
     }
 
     public function new() {
-        $title = $_POST['title'];
-        $detail = $_POST['detail'];
+        $data = array(
+            $title = $_POST['title'],
+            $detail = $_POST['detail'],
+        );
 
         $validation = new TodoValidation;
         $validation->setData($data);
         if($validation->check() === false) {
+            $error_msgs = $validation->getErrorMessages();
+
+            session_start();
+            $_SESSION['error_msgs'] = $error_msgs;
+        
             $params = sprintf("title=%s&detail=%s", $title, $detail);
             header("Location: ./new/php" . $params);
         }

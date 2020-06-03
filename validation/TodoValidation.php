@@ -7,6 +7,14 @@ class TodoValidation {
         $this->data = $data;
     }
 
+    public function getData() {
+        return $this->data;
+    }
+
+    public function getErrorMessages() {
+        return $this->error_msgs;
+    }
+
     public function check() {
         $title = $this->data['title'];
         $detail = $this->data['datail'];
