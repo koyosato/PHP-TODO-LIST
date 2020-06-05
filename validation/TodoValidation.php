@@ -20,10 +20,10 @@ class TodoValidation {
         $detail = $this->data['datail'];
 
         if(empty($title)) {
-            error_msgs[] = 'タイトルが空です。';
+            $this->$error_msgs[] = 'タイトルが空です。';
         }
         if(empty($detail)) {
-            $error_msgs[] = '詳細が空です。';
+            $this->$error_msgs[] = '詳細が空です。';
         }
 
         if(count($this->error_msgs) > 0) {
