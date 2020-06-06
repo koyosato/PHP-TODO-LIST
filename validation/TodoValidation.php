@@ -17,7 +17,7 @@ class TodoValidation {
 
     public function check() {
         $title = $this->data['title'];
-        $detail = $this->data['datail'];
+        $detail = $this->data['detail'];
 
         if(empty($title)) {
             $this->$error_msgs[] = 'タイトルが空です。';
