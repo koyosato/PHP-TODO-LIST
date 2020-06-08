@@ -109,8 +109,5 @@ class Todo {
         $pdo = new PDO(DSN, USERNAME, PASSWORD);
         $result = $pdo->query($query);
 
-        var_dump($result);
-        exit;
-
     }
 }
