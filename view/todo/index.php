@@ -4,6 +4,8 @@ require_once('./../../controller/TodoController.php');
 $controller = new TodoController();
 $todo_list = $controller->index();
 
+var_dump($title);
+
 ?>
 
 <html>

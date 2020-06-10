@@ -31,7 +31,8 @@ class TodoController {
             $_SESSION['error_msgs'] = $error_msgs;
         
             $params = sprintf("title=%s&detail=%s", $title, $detail);
-            header("Location: ./new/php" . $params);
+            header("Location: ./new.php" . $params);
+            return;
         }
 
         $validate_data = $validation->getData();
@@ -48,5 +49,6 @@ class TodoController {
             header( "Location: ./new.php" . $params);    
         }
         header( "Location: ./index.php" );
+        return;
     }
 }
